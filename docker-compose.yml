@@ -17,8 +17,6 @@ services:
     volumes:
       - ./:/var/www/html
       - ./.docker/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
-    networks:
-      - labnet
 
   #Nginx Service
   nginx:
@@ -31,8 +29,6 @@ services:
     volumes:
       - ./:/var/www/html
       - ./.docker/conf.d/:/etc/nginx/conf.d/
-    networks:
-      - labnet
 
   localhost:
     image: mariadb
@@ -57,9 +53,3 @@ services:
       - PMA_PORT=3306
     links:
       - localhost
-
-      #Docker Networks
-networks:
-  labnet: 
-    external:
-      name: labnet
